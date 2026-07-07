@@ -1,0 +1,49 @@
+# ─── Secrets — NEVER push these ───────────────────────────────────────────────
+.streamlit/secrets.toml
+.env
+*.env
+secrets.toml
+
+# ─── Large binary / data files ─────────────────────────────────────────────────
+data/
+models/
+distilbert/results/
+
+# ─── Python environment ────────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# ─── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ─── Model binaries ────────────────────────────────────────────────────────────
+*.joblib
+*.pkl
+*.pickle
+*.pt
+*.bin
+*.safetensors
+
+# ─── System files ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

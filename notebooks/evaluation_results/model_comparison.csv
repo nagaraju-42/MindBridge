@@ -1,0 +1,6 @@
+Model,Accuracy%,Precision%,Recall%,F1%,AUC-ROC%
+Voting Classifier,97.09,97.88,96.21,97.04,99.48
+Random Forest,96.51,99.04,93.86,96.38,99.02
+SVM (Linear+Calibrated),96.18,97.07,95.17,96.11,99.24
+Logistic Regression,96.05,97.96,93.99,95.94,99.25
+Naive Bayes,90.49,85.53,97.26,91.02,98.39

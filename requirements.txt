@@ -1,0 +1,42 @@
+# MindBridge — Python Dependencies
+# Install: pip install -r requirements.txt
+# Python 3.10+ recommended
+
+# ─── Streamlit web framework ───────────────────────────────────────────────────
+streamlit==1.35.0
+
+# ─── ML Core ───────────────────────────────────────────────────────────────────
+scikit-learn==1.4.2
+imbalanced-learn==0.12.2
+joblib==1.4.0
+
+# ─── NLP ───────────────────────────────────────────────────────────────────────
+nltk==3.8.1
+
+# ─── Explainability ────────────────────────────────────────────────────────────
+shap==0.45.0
+
+# ─── Data handling ─────────────────────────────────────────────────────────────
+pandas==2.2.2
+numpy==1.26.4
+
+# ─── Visualisation ─────────────────────────────────────────────────────────────
+matplotlib==3.8.4
+seaborn==0.13.2
+plotly==5.21.0
+wordcloud==1.9.3
+
+# ─── Database ──────────────────────────────────────────────────────────────────
+supabase==2.4.2
+
+# ─── Email ─────────────────────────────────────────────────────────────────────
+resend==2.1.0
+
+# ─── DistilBERT (GPU optional — comment out if no CUDA) ───────────────────────
+torch==2.3.0
+transformers==4.41.0
+datasets==2.19.0
+accelerate==0.30.0
+
+# ─── Dataset download (optional) ───────────────────────────────────────────────
+kaggle==1.6.12

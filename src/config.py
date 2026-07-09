@@ -17,6 +17,7 @@ try:
     SUPABASE_KEY  = st.secrets.get("SUPABASE_KEY",  os.getenv("SUPABASE_KEY",  "NOT_SET"))
     SUPABASE_SERVICE_KEY = st.secrets.get("SUPABASE_SERVICE_KEY", os.getenv("SUPABASE_SERVICE_KEY", "NOT_SET"))
     RESEND_API_KEY = st.secrets.get("RESEND_API_KEY", os.getenv("RESEND_API_KEY", "NOT_SET"))
+    OPENROUTER_API_KEY = st.secrets.get("OPENROUTER_API_KEY", os.getenv("OPENROUTER_API_KEY", "NOT_SET"))
     EMAIL_FROM    = st.secrets.get("EMAIL_FROM",    "MindBridge <noreply@example.com>")
     COUNSELOR_PASSWORD = st.secrets.get("COUNSELOR_PASSWORD", "admin")
     # Counselor WhatsApp numbers
@@ -33,6 +34,7 @@ except Exception:
     SUPABASE_KEY  = os.getenv("SUPABASE_KEY",  "NOT_SET")
     SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "NOT_SET")
     RESEND_API_KEY = os.getenv("RESEND_API_KEY", "NOT_SET")
+    OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "NOT_SET")
     EMAIL_FROM    = os.getenv("EMAIL_FROM",    "MindBridge <noreply@example.com>")
     COUNSELOR_PASSWORD = os.getenv("COUNSELOR_PASSWORD", "admin")
     COUNSELOR_CSE_WA  = os.getenv("COUNSELOR_CSE_WA",  "919999999901")

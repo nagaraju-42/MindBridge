@@ -48,6 +48,13 @@ with st.sidebar:
     st.page_link("pages/1_Text_Analyser.py", label="🔍 Text Analyser")
     st.page_link("pages/2_Student_Form.py",  label="📋 Wellbeing Check")
     st.divider()
+    st.markdown("### ⚙️ Advanced Settings")
+    enable_llm_safety_net = st.toggle(
+        "Enable LLM Safety Net",
+        value=False,
+        help="When enabled, borderline cases will be sent to a third-party LLM (Llama 3) to check for sarcasm, passive ideation, or hidden context."
+    )
+    st.divider()
     st.info("🔒 All submissions are anonymous. No name is ever stored.")
 
 # ─── Page Header ──────────────────────────────────────────────────────────────
@@ -128,18 +135,30 @@ if analyse_clicked and raw_text:
         from src.models import predict_single
         result = predict_single(text_to_analyse, rf, tfidf)
 
-    # Step 3: Confidence check (REQ-D10)
+    # Step 3: LLM Safety Net for Borderline Cases
+    llm_reasoning = None
+    if enable_llm_safety_net and result["risk_level"] in ["low", "medium"] and 0.35 <= result["confidence"] <= 0.60:
+        with st.spinner("🤖 Double-checking with LLM API to prevent false negatives..."):
+            from src.llm_evaluator import evaluate_borderline_text
+            llm_result = evaluate_borderline_text(text_to_analyse, result["confidence"])
+            if llm_result["is_high_risk"]:
+                result["risk_level"] = "high"
+                result["label"] = "Depressed (LLM Override)"
+                result["confidence"] = 0.99  # Override confidence
+                llm_reasoning = llm_result["reasoning"]
+            else:
+                st.toast("🤖 LLM Safety Net verified this text as Low Risk.")
+
+    # Step 3.5: Confidence check (REQ-D10)
     if not check_confidence(result["confidence"]):
         # REQ-D12: Low-confidence NOT logged
         conf_pct = result["confidence"] * 100
-        st.info(f"💭 The AI could not determine a clear pattern from your text (Confidence: {conf_pct:.1f}%).")
-        st.markdown(
+        st.warning(f"⚠️ **Borderline Confidence ({conf_pct:.1f}%):** The AI could not determine a clear pattern from your text.")
+        st.caption(
             "This can happen when text is very short, or when it contains a complex "
             "mix of positive and negative emotional signals that the model cannot "
-            "clearly classify. Try writing 3–4 sentences specifically about how "
-            "you've been feeling this week."
+            "clearly classify. Analytics are shown below, but may be less reliable."
         )
-        st.stop()
 
     # Step 4: SHAP Explanation
     with st.spinner("✨ Generating word explanation..."):
@@ -184,6 +203,9 @@ if analyse_clicked and raw_text:
     m1.metric("Prediction",   result["label"].split()[0])
     m2.metric("AI Confidence", f"{result['confidence']*100:.1f}%")
     m3.metric("Risk Level",    risk_label)
+    
+    if llm_reasoning:
+        st.error(f"**LLM Safety Net Triggered:** {llm_reasoning}")
 
     # SHAP Explanation (REQ-U03, REQ-S06)
     st.markdown("#### ✨ What Drove This Prediction?")
@@ -267,6 +289,14 @@ if analyse_clicked and raw_text:
                 counselor_info["calendly"],
                 use_container_width=True,
             )
+    else:
+        st.divider()
+        st.markdown("### 🌟 Keep up the great work!")
+        st.markdown(
+            "It looks like you're doing well right now. Remember that mental health is an ongoing journey. "
+            "If you ever feel overwhelmed in the future, the **MindBridge** resources are always here for you."
+        )
+        st.balloons()
 
     # Student resources
     with st.expander("ℹ️ Wellbeing Resources"):
@@ -277,3 +307,26 @@ if analyse_clicked and raw_text:
         - **iCall Online Chat**: https://icallhelpline.org
         - **Anurag University Psychology Dept**: Visit Student Services office
         """)
+
+# ─── EDA WordClouds (Real-time Generation) ──────────────────────────────────
+st.divider()
+st.markdown("## ☁️ Dataset Lexicon (Word Clouds)")
+with st.expander("View Global Dataset Word Clouds", expanded=True):
+    st.markdown("These word clouds are generated dynamically from the underlying `reddit_depression.csv` dataset, showing the most frequent words in depressed vs. non-depressed texts.")
+    
+    from src.wordcloud_generator import generate_wordclouds
+    import os
+    
+    csv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'reddit_depression.csv')
+    sad_img, happy_img = generate_wordclouds(csv_path)
+    
+    if sad_img and happy_img:
+        col_sad, col_happy = st.columns(2)
+        with col_sad:
+            st.markdown("### 🔴 Depression Markers")
+            st.image(sad_img, use_container_width=True)
+        with col_happy:
+            st.markdown("### 🟢 Non-Depression Markers")
+            st.image(happy_img, use_container_width=True)
+    else:
+        st.error("Could not generate Word Clouds. Please check the dataset.")

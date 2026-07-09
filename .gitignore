@@ -5,8 +5,6 @@
 secrets.toml
 
 # ─── Large binary / data files ─────────────────────────────────────────────────
-data/
-models/
 distilbert/results/
 
 # ─── Python environment ────────────────────────────────────────────────────────

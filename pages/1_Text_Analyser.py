@@ -149,14 +149,14 @@ if analyse_clicked and raw_text:
     # Step 3: LLM Safety Net for Borderline Cases
     llm_reasoning = None
     _conf = result['confidence']
-    if not (0.35 <= _conf <= 0.60):
-        _thinking_log.append(f"🚦 **LLM Safety Net:** Not triggered. Confidence `{_conf*100:.1f}%` is outside the grey-area range (35%–60%). Random Forest decision is final.")
+    if not (0.20 <= _conf <= 0.70):
+        _thinking_log.append(f"🚦 **LLM Safety Net:** Not triggered. Confidence `{_conf*100:.1f}%` is outside the grey-area range (20%–70%). Random Forest decision is final.")
     elif not enable_llm_safety_net:
         _thinking_log.append(f"🚦 **LLM Safety Net:** Disabled by user toggle. Confidence `{_conf*100:.1f}%` is in grey-area but LLM check is off.")
     else:
-        _thinking_log.append(f"🔶 **LLM Safety Net TRIGGERED.** Confidence `{_conf*100:.1f}%` is in the grey area (35%–60%). Sending text to Llama-3 for deep semantic analysis...")
+        _thinking_log.append(f"🔶 **LLM Safety Net TRIGGERED.** Confidence `{_conf*100:.1f}%` is in the grey area (20%–70%). Sending text to Llama-3 for deep semantic analysis...")
 
-    if enable_llm_safety_net and result["risk_level"] in ["low", "medium"] and 0.35 <= result["confidence"] <= 0.60:
+    if enable_llm_safety_net and result["risk_level"] in ["low", "medium"] and 0.20 <= result["confidence"] <= 0.70:
         with st.spinner("🤖 Double-checking with LLM API to prevent false negatives..."):
             from src.llm_evaluator import evaluate_borderline_text
             llm_result = evaluate_borderline_text(text_to_analyse, result["confidence"])

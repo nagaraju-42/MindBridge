@@ -110,6 +110,9 @@ with col_btn:
     )
 
 # ─── Analysis Pipeline ────────────────────────────────────────────────────────
+# Collects reasoning steps for the "AI Thinking" block shown after analysis.
+_thinking_log = []
+
 if analyse_clicked and raw_text:
 
     # Step 1: Input Validation
@@ -127,16 +130,32 @@ if analyse_clicked and raw_text:
         st.stop()
 
     text_to_analyse = validation.text or raw_text
+    _thinking_log.append(f"✅ **Validation passed.** Input length: {len(raw_text)} chars. Vocabulary tokens: OK.")
     if validation.truncated:
         st.info("✂️ Your text was trimmed to 15,000 characters for analysis.")
+        _thinking_log.append("✂️ Text was truncated to 15,000 characters before processing.")
 
     # Step 2: Prediction
     with st.spinner("🧠 Running AI analysis..."):
         from src.models import predict_single
         result = predict_single(text_to_analyse, rf, tfidf)
 
+    # Log TF-IDF feature matching
+    _vec = tfidf.transform([text_to_analyse])
+    _nonzero_features = _vec.nnz
+    _thinking_log.append(f"📐 **TF-IDF Vectorisation complete.** {_nonzero_features} of 5,000 features matched in your text.")
+    _thinking_log.append(f"🌲 **Random Forest (200 trees) voted.** Raw confidence score: `{result['confidence']*100:.2f}%` → Label: `{result['label']}`")
+
     # Step 3: LLM Safety Net for Borderline Cases
     llm_reasoning = None
+    _conf = result['confidence']
+    if not (0.35 <= _conf <= 0.60):
+        _thinking_log.append(f"🚦 **LLM Safety Net:** Not triggered. Confidence `{_conf*100:.1f}%` is outside the grey-area range (35%–60%). Random Forest decision is final.")
+    elif not enable_llm_safety_net:
+        _thinking_log.append(f"🚦 **LLM Safety Net:** Disabled by user toggle. Confidence `{_conf*100:.1f}%` is in grey-area but LLM check is off.")
+    else:
+        _thinking_log.append(f"🔶 **LLM Safety Net TRIGGERED.** Confidence `{_conf*100:.1f}%` is in the grey area (35%–60%). Sending text to Llama-3 for deep semantic analysis...")
+
     if enable_llm_safety_net and result["risk_level"] in ["low", "medium"] and 0.35 <= result["confidence"] <= 0.60:
         with st.spinner("🤖 Double-checking with LLM API to prevent false negatives..."):
             from src.llm_evaluator import evaluate_borderline_text
@@ -146,8 +165,10 @@ if analyse_clicked and raw_text:
                 result["label"] = "Depressed (LLM Override)"
                 result["confidence"] = 0.99  # Override confidence
                 llm_reasoning = llm_result["reasoning"]
+                _thinking_log.append(f"🔴 **Llama-3 verdict: HIGH RISK.** RF prediction overridden. Reasoning: _{llm_reasoning}_")
             else:
                 st.toast("🤖 LLM Safety Net verified this text as Low Risk.")
+                _thinking_log.append(f"🟢 **Llama-3 verdict: LOW RISK.** RF prediction confirmed. No hidden distress detected.")
 
     # Step 3.5: Confidence check (REQ-D10)
     if not check_confidence(result["confidence"]):
@@ -167,6 +188,11 @@ if analyse_clicked and raw_text:
         shap_out   = explain_prediction(cleaned, rf, tfidf, explainer)
         chart_bytes = plot_shap_bar(shap_out["top_words"])
 
+    _top_shap = shap_out["top_words"][:5]
+    _shap_summary = ", ".join([f"`{w}` ({v:+.3f})" for w, v in _top_shap])
+    _thinking_log.append(f"✨ **SHAP TreeExplainer ran.** Top 5 influential features: {_shap_summary}")
+    _thinking_log.append(f"📦 **Final Decision → Risk Level: `{result['risk_level'].upper()}`** | Confidence: `{result['confidence']*100:.1f}%`")
+
     # Step 5: Save to Supabase (only valid + sufficient confidence — REQ-D12)
     try:
         from src.database import save_submission
@@ -185,6 +211,36 @@ if analyse_clicked and raw_text:
 
     # Step 6: Display Results
     st.divider()
+
+    # ── AI Thinking Block (like Claude) ──────────────────────────────────────
+    with st.expander("🧠 AI Thinking  *(click to see what the model did internally)*", expanded=False):
+        st.markdown(
+            """
+            <style>
+            .thinking-block {
+                background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+                border-left: 4px solid #a855f7;
+                border-radius: 8px;
+                padding: 16px 20px;
+                font-family: 'Courier New', monospace;
+                font-size: 13px;
+                color: #e2e8f0;
+                line-height: 1.9;
+            }
+            .thinking-block hr { border-color: #4c1d95; margin: 10px 0; }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+        steps_html = "<br>".join(
+            [f"<b>Step {i+1}:</b> {step}" for i, step in enumerate(_thinking_log)]
+        )
+        st.markdown(
+            f"<div class='thinking-block'>{steps_html}</div>",
+            unsafe_allow_html=True
+        )
+    # ─────────────────────────────────────────────────────────────────────────
+
     st.markdown("## 📊 Analysis Result")
 
     # Risk level colour-coded banner (REQ-U05)

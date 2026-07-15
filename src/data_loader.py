@@ -1,4 +1,4 @@
-﻿"""
+"""
 src/data_loader.py
 MindBridge - Dataset Loading and Train/Test Splitting.
 Satisfies SRS REQ-M03: 80/20 split, random_state=42, stratified.
@@ -110,6 +110,30 @@ def load_and_split(save=True, verbose=True):
 
     if verbose:
         print(f"After cleaning: {len(cleaned)} valid texts")
+
+    # ─── Augmentation: Merge student-specific counter-examples ─────────────
+    AUG_PATH = "data/student_augmentation.csv"
+    if os.path.exists(AUG_PATH):
+        if verbose:
+            print(f"\n[Augmentation] Found {AUG_PATH}, merging student examples...")
+        aug_df = pd.read_csv(AUG_PATH)
+        aug_texts  = aug_df["clean_text"].astype(str).values
+        aug_labels = aug_df["is_depression"].astype(int).values
+        aug_cleaned = batch_clean(aug_texts)
+        # Filter empty after cleaning
+        aug_valid = [(c, l) for c, l in zip(aug_cleaned, aug_labels) if len(c.strip()) > 0]
+        if aug_valid:
+            aug_c, aug_l = zip(*aug_valid)
+            cleaned = list(cleaned) + list(aug_c)
+            labels  = np.concatenate([labels, np.array(aug_l)])
+            if verbose:
+                n0 = sum(1 for l in aug_l if l == 0)
+                n1 = sum(1 for l in aug_l if l == 1)
+                print(f"[Augmentation] Added {len(aug_valid)} samples ({n0} non-depressed, {n1} depressed)")
+                print(f"[Augmentation] Total dataset now: {len(cleaned)} samples")
+    else:
+        if verbose:
+            print(f"\n[Augmentation] No {AUG_PATH} found, skipping augmentation.")
 
     X_train, X_test, y_train, y_test = train_test_split(
         cleaned, labels,

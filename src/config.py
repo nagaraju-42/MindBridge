@@ -72,9 +72,9 @@ RANDOM_SEED        = 42      # REQ-M03: reproducibility
 CV_FOLDS           = 5       # REQ-M05: 5-fold GridSearchCV
 
 # ─── Risk Thresholds ──────────────────────────────────────────────────────────
-RISK_HIGH_THRESHOLD   = 0.70  # confidence >= 0.70 → High Risk
-RISK_MEDIUM_THRESHOLD = 0.40  # confidence >= 0.40 → Medium Risk
-                               # confidence < 0.40  → Low Risk
+RISK_HIGH_THRESHOLD   = 0.75  # confidence >= 0.75 → High Risk
+RISK_MEDIUM_THRESHOLD = 0.55  # confidence >= 0.55 → Medium Risk
+                               # confidence < 0.55  → Low Risk
 
 # ─── File Paths ────────────────────────────────────────────────────────────────
 DATA_PATH          = "data/reddit_depression.csv"

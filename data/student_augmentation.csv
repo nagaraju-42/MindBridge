@@ -1,0 +1,194 @@
+clean_text,is_depression
+"I stayed up late finishing my assignment but I feel proud of what I submitted",0
+"Exam went well today and I feel confident about the results",0
+"Had a really productive day in the lab working on my project",0
+"Feeling nervous before the presentation but I know I am prepared",0
+"The workload is heavy this semester but I am managing it well",0
+"I woke up early to study and got a lot done before class",0
+"Our team project is coming together nicely and we are on track",0
+"I am exhausted after the sports day but it was so much fun",0
+"Looking forward to the weekend after a tough but rewarding week",0
+"I scored well in the internal exam and that boosted my confidence",0
+"The professor appreciated my work during the review session today",0
+"I pushed myself hard during placement preparation and it is paying off",0
+"Feeling motivated after attending the guest lecture on AI careers",0
+"Had a great discussion with my guide about the project approach",0
+"Spent the whole night coding but the feature finally works perfectly",0
+"I am stressed about the deadline but I have a plan to finish on time",0
+"College fest preparation is tiring but the excitement keeps me going",0
+"I got selected for the next round of the coding competition",0
+"My friends and I had a productive study group session today",0
+"The semester is demanding but I am learning a lot of new things",0
+"Submitted my mini project report and feel relieved now",0
+"Had a challenging viva but managed to answer most questions well",0
+"I am working hard to improve my CGPA this semester",0
+"Attended a workshop on machine learning and it was really inspiring",0
+"Balancing academics and extracurriculars is tough but I enjoy both",0
+"I missed one assignment but I will make up for it in the next one",0
+"The practical lab session was difficult but I figured it out eventually",0
+"I feel overwhelmed with four exams next week but I am planning my study schedule",0
+"Got feedback from my mentor and it will help me improve my project",0
+"I am pushing through the tough coursework because I know it matters",0
+"Excited about the internship opportunity I applied for last week",0
+"My code had bugs but after debugging all night it finally runs clean",0
+"I am tired from the hackathon but our team built something amazing",0
+"Feeling good about my progress in the online certification course",0
+"The campus library was crowded today so I studied in the hostel instead",0
+"I prepared flash cards for the exam and they really helped during revision",0
+"Completed my final year project milestone and my guide approved it",0
+"Had a disagreement with my teammate but we sorted it out professionally",0
+"I volunteered at the college event and it was a great experience",0
+"Ran five kilometers this morning before class and feel energized",0
+"I am focused on cracking the GATE exam and studying every day",0
+"Cleared my doubts with the TA during the extra help session",0
+"I organized my notes and now I feel much more prepared for finals",0
+"Gave a seminar today and the class appreciated my presentation style",0
+"I am saving money from my part time tutoring to buy a new laptop",0
+"The canteen food was terrible but at least the company was great",0
+"I finally understood the concept of backpropagation after re-reading it three times",0
+"My roommate and I stayed up discussing career options and it was helpful",0
+"Registered for a competitive programming contest happening next month",0
+"I feel confident about my placement preparation after solving a hundred problems",0
+"The weather is really hot but I still made it to every class today",0
+"I am proud of myself for maintaining a consistent study routine this semester",0
+"Got appreciation from the HOD during the department meeting for my project",0
+"Helped a junior with their Python doubts and it felt good to teach",0
+"I am looking forward to the industrial visit planned for next month",0
+"Finished reading the research paper my guide recommended and found it insightful",0
+"My attendance is low because of health issues but I am catching up on lectures",0
+"I feel grateful for the scholarship that is supporting my education",0
+"Had a fun time at the farewell party organized by our batch",0
+"I am learning DSA seriously now and solving problems daily on LeetCode",0
+"The bus was late today but I still reached the lab on time somehow",0
+"I missed my family today but a video call cheered me up",0
+"Cooked dinner in the hostel with friends and it turned out surprisingly good",0
+"I am determined to get into a good company during campus placements",0
+"The professor extended the assignment deadline which gave me breathing room",0
+"Joined a new club on campus and made some great connections already",0
+"I got a certificate for completing the NPTEL course on cloud computing",0
+"Feeling recharged after the semester break and ready to take on new challenges",0
+"I am tired of the commute but at least I get to listen to podcasts",0
+"Explored a new framework for my project and it looks very promising",0
+"My project partner and I divided the tasks efficiently and are ahead of schedule",0
+"I am adapting to the new timetable and starting to get into a rhythm",0
+"Participated in a debate competition and even though I lost I learned a lot",0
+"The college gym reopened and I have started working out again regularly",0
+"I am tracking my expenses this month to manage my budget better",0
+"Had a tough day but a good dinner and some music improved my mood",0
+"I am confident about the Review 1 presentation after rehearsing multiple times",0
+"I really struggle with mathematics but I am getting extra coaching and improving slowly",0
+"Started journaling to organize my thoughts and it is helping me stay focused",0
+"I am training for the inter college cricket tournament and practices are going well",0
+"Had an interesting conversation with an alumnus about career paths in tech",0
+"I feel accomplished after completing the AWS certification exam today",0
+"The rain disrupted the outdoor event but we moved it inside and had fun anyway",0
+"I need to improve my communication skills so I joined the Toastmasters club on campus",0
+"Worked on the database design for our project and it looks solid now",0
+"I am worried about the semester results but I gave my best effort",0
+"The cultural fest was amazing and our department stall won second place",0
+"Got positive feedback on my resume from the placement cell coordinator",0
+"I spent the holiday cleaning and reorganizing my room which felt refreshing",0
+"The new elective on artificial intelligence is the most interesting course this semester",0
+"I am learning to balance screen time and physical activity for better health",0
+"Mentored a group of first years during the orientation week and enjoyed it",0
+"Feeling energized after the morning yoga session organized by the wellness committee",0
+"I received constructive criticism on my code review and I am working on improving",0
+"The electricity went out during my online class but I managed to catch the recording later",0
+"I am grateful for supportive friends who help me through stressful exam weeks",0
+"Planned my weekend schedule to include both study time and recreation",0
+"I attended a career counseling session and it clarified my postgraduate options",0
+"Submitted a paper to the student research conference and waiting for the review",0
+"I stayed up late watching a movie with friends after a hard exam and it was worth it",0
+"The hostel internet is slow but I am using the library WiFi for my coursework",0
+"I feel anxious about the upcoming viva but I have prepared thorough notes",0
+"Organized a surprise birthday party for my friend in the hostel common room",0
+"I am reading a self help book that is changing how I approach problems",0
+"Completed a thirty day coding challenge and my problem solving speed improved",0
+"I am homesick sometimes but talking to family on the phone always helps",0
+"The new semester subjects are challenging but I am excited to learn them",0
+"I feel satisfied with my progress report and looking forward to the next milestone",0
+"Helped organize the tech fest and it was chaotic but incredibly rewarding",0
+"I planned a small trip with friends for the upcoming break and we are all excited",0
+"Feeling blessed to have a supportive family backing my engineering journey",0
+"The viva went better than I expected because I revised the concepts thoroughly",0
+"I am proud of my team for winning the project expo competition at college",0
+"Started a small YouTube channel to share my coding journey and tutorials",0
+"I am a bit behind on assignments but I have created a catch up schedule",0
+"Attended the convocation rehearsal and it hit me that college is ending soon",0
+"I feel optimistic about my future career after today productive placement training",0
+"I burned out last month but I recovered by taking a proper weekend off and I will not skip breaks again",0
+"Failed one subject but I am going to study harder and clear it in supplementary exams",0
+"I know I can do better and that is what pushes me to keep working every single day",0
+"Feeling really sleepy in class because I slept late finishing the lab record but I will fix my schedule tonight",0
+"Sometimes I compare myself to toppers and feel behind but then I remind myself everyone has their own pace",0
+"Struggled with time management this week but I have already adjusted my planner for next week",0
+"I lost my temper during a group project argument but I apologized and we moved forward",0
+"The pressure of placements is real but I am channeling it into focused preparation",0
+"My parents are counting on me and that motivates me to study harder every day",0
+"I skipped breakfast twice this week because of early classes but I am packing snacks now to fix that habit",0
+"i cant wait for the semester to end so i can finally relax and recharge for the next one",0
+"im kinda stressed rn but honestly its nothing i cant handle with some good planning",0
+"bro the exam was brutal but at least its over now lol time to chill",0
+"ngl im exhausted from all the assignments but the grind is worth it fr",0
+"lowkey proud of myself for not procrastinating this whole week thats growth right there",0
+"the lab was tough af but my team pulled through and we got it working",0
+"gonna treat myself to some good food tonight because i survived the midterms lmao",0
+"honestly college is hard but i wouldnt trade these experiences for anything",0
+"had a rough morning but my friends made me laugh at lunch and now im good",0
+"idk why everyone hates mondays i actually had a productive start to the week",0
+"my code broke like five times but i finally fixed it and it feels amazing ngl",0
+"cant believe i pulled an all nighter and still aced the presentation today lets gooo",0
+"feeling kinda drained but nothing a good nights sleep wont fix tbh",0
+"was super anxious before the interview but once it started i nailed it fr",0
+"the hostel wifi is trash but at least i got my assignment submitted on time lol",0
+"life is hectic rn but im grateful for the opportunities coming my way",0
+"sometimes i feel like giving up but then i remember why i started and keep pushing",0
+"not gonna lie this semester hit different but im adapting and getting stronger",0
+"spent the whole day in the library and my brain is fried but i covered three chapters",0
+"i really need a vacation but first let me clear these backlogs and then ill rest properly",0
+"i feel so sleepy but cant stop now gotta finish this assignment before midnight",0
+"was feeling low earlier but a call with mom fixed everything as usual",0
+"bruh the project deadline got extended and i have never been so relieved in my life",0
+"im not where i want to be yet but im definitely not where i used to be either and thats progress",0
+"another day another grind but at least the food in the mess was decent today lol",0
+"this whole week was chaos but somehow i survived and thats what matters",0
+"I have been feeling hopeless about everything nothing brings me joy anymore",1
+"I do not want to get out of bed I just lay here staring at the ceiling all day",1
+"nobody cares about me I could disappear and no one would notice",1
+"I am so tired of pretending to be okay when inside I am falling apart",1
+"everything feels pointless I do not see any reason to keep trying",1
+"I have been crying every night and I do not even know why anymore",1
+"I feel like a burden to everyone around me they would be better off without me",1
+"I cannot concentrate on anything my mind is just blank and empty all the time",1
+"I have lost interest in everything I used to love nothing excites me at all",1
+"I feel so alone even when I am surrounded by people no one understands",1
+"I have not eaten properly in days I just do not have the appetite or energy",1
+"I keep thinking about how much easier it would be if I just was not here",1
+"I failed again what is even the point of trying when I always end up failing",1
+"I hate myself and everything about my life nothing ever goes right for me",1
+"I cannot sleep at night my thoughts just keep spiraling into dark places",1
+"I feel numb I do not feel happy or sad just nothing and it scares me",1
+"every morning I wake up wishing I had not what is wrong with me",1
+"I have been isolating myself from everyone I just want to be left alone forever",1
+"the world would genuinely be better without me I am just taking up space",1
+"I am so exhausted mentally and physically I do not think I can keep going much longer",1
+"i literally dont care about anything anymore nothing matters tbh",1
+"cant remember the last time i was actually happy everything is just grey now",1
+"im so tired of existing not living just existing theres a difference",1
+"ngl i just want everything to stop like permanently if you know what i mean",1
+"everyone says it gets better but when because its been getting worse for years",1
+"i smile in front of people but inside i am completely dead and hollow",1
+"whats the point of studying or working hard when nothing will change anyway",1
+"i keep having these dark thoughts and they are getting harder to ignore each day",1
+"i feel like im drowning and no one can see it happening right in front of them",1
+"another day of pretending lol im so good at faking being fine that nobody suspects anything",1
+"im just so done with everything i cant even explain how empty i feel inside",1
+"i used to be happy and now i dont even recognize who i am anymore its scary",1
+"sometimes i think about just ending it all and that thought gives me more peace than anything else",1
+"i havent talked to anyone in weeks and honestly nobody has checked on me either so yeah",1
+"every single day feels the same wake up suffer sleep repeat i am trapped",1
+"i am falling behind in everything and i dont even care anymore thats how far gone i am",1
+"people keep telling me to be positive but they dont understand that my brain wont let me",1
+"i look at other people being happy and i cant even comprehend what that feels like anymore",1
+"i am so mentally exhausted that even breathing feels like too much effort some days",1
+"there is this constant heaviness in my chest that never goes away no matter what i do",1
